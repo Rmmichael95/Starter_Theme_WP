@@ -170,6 +170,11 @@ require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/customizer.php';
 
 /**
+ * Custom Nav_Walker for Bootstrap.
+ */
+require get_template_directory() . '/inc/dhali-bootstrap-5-navwalker.php';
+
+/**
  * Load Jetpack compatibility file.
  */
 if ( defined( 'JETPACK__VERSION' ) ) {

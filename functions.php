@@ -49,7 +49,7 @@ function _s_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
-			'menu-1' => esc_html__( 'Primary', '_s' ),
+			'main-menu' => esc_html__( 'Primary', '_s' ),
 		)
 	);
 
@@ -170,7 +170,16 @@ require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/customizer.php';
 
 /**
- * Custom Nav_Walker for Bootstrap.
+ * Enqueue Bootstrap.
+ */
+function enqueue_bootstrap() {
+	wp_enqueue_style( 'bootstrap-css', get_template_directory_uri() . '/assets/bootstrap/css/bootstrap.css', '5.3.3', 'all' );
+	wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/assets/bootstrap/js/bootstrap.bundle.min.js', array( 'jquery' ), '4.6.0', true );
+}
+add_action( 'wp_enqueue_scripts', 'enqueue_bootstrap' );
+
+/**
+ * Custom Nav Walker for Bootstrap.
  */
 require get_template_directory() . '/inc/dhali-bootstrap-5-navwalker.php';
 

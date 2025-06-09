@@ -196,3 +196,18 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
+
+// Optional functions, uncomment to use
+
+/**
+ *
+ * Uncomment to add custom classes to the_custom_logo
+ *
+ * Currently adding navbar-brand from Bootstrap
+ * /
+/* function add_custom_class_to_logo($html) { */
+/*     $html = str_replace('class="custom-logo-link"', 'class="custom-logo-link navbar-brand "', $html); */
+/*     return $html; */
+/* } */
+/* add_filter('get_custom_logo', 'add_custom_class_to_logo'); */
+

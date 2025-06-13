@@ -179,9 +179,12 @@ function enqueue_bootstrap() {
 add_action( 'wp_enqueue_scripts', 'enqueue_bootstrap' );
 
 /**
- * Custom Nav Walker for Bootstrap.
+ * Include Bootstrap 5 Navwalker
  */
-require get_template_directory() . '/inc/dhali-bootstrap-5-navwalker.php';
+$navwalker_path = get_template_directory() . '/inc/dhali-bootstrap-5-navwalker.php';
+if (file_exists($navwalker_path)) {
+    require_once $navwalker_path;
+}
 
 /**
  * Load Jetpack compatibility file.

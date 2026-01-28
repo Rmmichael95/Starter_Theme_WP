@@ -1,8 +1,8 @@
 // sass/_bootstrap-lookup.scss
 // This file loads bootstrap and custom bootstrap overrides
-@import "../node_modules/bootstrap/scss/functions";
+@import "../assets/vendor/npm/bootstrap/scss/functions";
 @import "variables-site"; // Your custom colors/fonts
-@import "../node_modules/bootstrap/scss/variables";
-@import "../node_modules/bootstrap/scss/variables-dark";
-@import "../node_modules/bootstrap/scss/maps";
-@import "../node_modules/bootstrap/scss/mixins";
+@import "../assets/vendor/npm/bootstrap/scss/variables";
+@import "../assets/vendor/npm/bootstrap/scss/variables-dark";
+@import "../assets/vendor/npm/bootstrap/scss/maps";
+@import "../assets/vendor/npm/bootstrap/scss/mixins";

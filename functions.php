@@ -215,11 +215,11 @@ require get_template_directory() . '/inc/customizer.php';
  */
 function theme_enqueue_bootstrap()
 {
-    $path = get_template_directory() . '/assets/vendor/npm/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js';
+    $path = get_template_directory() . '/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js';
 
     wp_enqueue_script(
         'bootstrap-js',
-        get_template_directory_uri() . '/assets/vendor/npm/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js',
+        get_template_directory_uri() . '/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js',
         array(),
         file_exists($path) ? filemtime($path) : null,
         true

@@ -33,7 +33,6 @@
     "source": "https://github.com/Automattic/_s"
   },
   "config": {
-    "vendor-dir": "assets/vendor/composer",
     "allow-plugins": {
       "dealerdirect/phpcodesniffer-composer-installer": true
     }

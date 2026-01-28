@@ -1,5 +1,5 @@
-/assets/vendor/composer
-/assets/vendor/npm/node_modules
+/vendor
+/node_modules
 package-lock.json
 composer.lock
 style.css.map

@@ -26,10 +26,10 @@
     "sass": "^1.77.8"
   },
   "scripts": {
-    "build": "npm run build:css && npm run build:blocks && npm run build:rtl",
-    "build:css": "sass sass/style.scss:style.min.css --style=compressed --no-source-map",
-    "build:blocks": "sass acf-blocks/:acf-blocks/ --style=compressed --no-source-map --error-css && find acf-blocks/ -name '*.css' -exec sh -c 'mv \"$1\" \"${1%.css}.min.css\"' _ {} \\;",
-    "build:rtl": "rtlcss style.min.css style-rtl.min.css",
+    "compile": "npm run build:css && npm run build:blocks && npm run build:rtl",
+    "compile:css": "sass sass/style.scss:style.min.css --style=compressed --no-source-map",
+    "compile:blocks": "sass acf-blocks/:acf-blocks/ --style=compressed --no-source-map --error-css && find acf-blocks/ -name '*.css' -exec sh -c 'mv \"$1\" \"${1%.css}.min.css\"' _ {} \\;",
+    "compile:rtl": "rtlcss style.min.css style-rtl.min.css",
     "watch": "sass --watch sass/style.scss:style.css acf-blocks:acf-blocks --style=expanded --source-map",
     "lint:scss": "wp-scripts lint-style 'sass/**/*.scss'",
     "lint:js": "wp-scripts lint-js 'js/*.js'",

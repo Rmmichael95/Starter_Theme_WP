@@ -46,7 +46,7 @@ To start using all the tools that come with `_s` you need to install the necessa
 
 ```sh
 $ composer install
-$ npm install --prefix assets/vendor/npm
+$ npm install
 ```
 
 ### Available CLI commands
@@ -56,7 +56,8 @@ $ npm install --prefix assets/vendor/npm
 - `composer lint:wpcs` : checks all PHP files against [PHP Coding Standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/php/).
 - `composer lint:php` : checks all PHP files for syntax errors.
 - `composer make-pot` : generates a .pot file in the `languages/` directory.
-- `npm run compile:css` : compiles SASS files to css.
+- `npm run compile` : compiles SASS files to css.
+- `npm run compile:blocks` : compiles SASS files to css.
 - `npm run compile:rtl` : generates an RTL stylesheet.
 - `npm run watch` : watches all SASS files and recompiles them to css when they change.
 - `npm run lint:scss` : checks all SASS files against [CSS Coding Standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/css/).

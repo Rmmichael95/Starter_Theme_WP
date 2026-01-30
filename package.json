@@ -26,8 +26,9 @@
     "sass": "^1.77.8"
   },
   "scripts": {
-    "compile": "npm run build:css && npm run build:blocks && npm run build:rtl",
-    "compile:css": "sass sass/style.scss:style.min.css --style=compressed --no-source-map",
+    "compile": "npm run compile:css-min && npm run compile:blocks && npm run compile:rtl",
+    "compile:css": "sass sass/style.scss:style.css --no-source-map",
+    "compile:css-min": "sass sass/style.scss:style.min.css --style=compressed --no-source-map",
     "compile:woo": "sass sass/woocommerce.scss:woocommerce.min.css --style=compressed --no-source-map",
     "compile:blocks": "sass acf-blocks/:acf-blocks/ --style=compressed --no-source-map --error-css && find acf-blocks/ -name '*.css' -exec sh -c 'mv \"$1\" \"${1%.css}.min.css\"' _ {} \\;",
     "compile:rtl": "rtlcss style.min.css style-rtl.min.css",

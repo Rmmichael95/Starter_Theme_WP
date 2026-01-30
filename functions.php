@@ -138,40 +138,40 @@ add_action( 'widgets_init', '_s_widgets_init' );
  * Enqueue scripts and styles.
  */
 function _s_scripts() {
-    $dir = get_stylesheet_directory();
-    $uri = get_stylesheet_directory_uri();
+	$dir = get_stylesheet_directory();
+	$uri = get_stylesheet_directory_uri();
 
-    if (is_rtl()) {
-        $css_rel = '/style-rtl.min.css';
-    } else {
-        $css_rel = '/style.min.css';
-    }
+	if ( is_rtl() ) {
+		$css_rel = '/style-rtl.min.css';
+	} else {
+		$css_rel = '/style.min.css';
+	}
 
-    $css_abs = $dir . $css_rel;
+	$css_abs = $dir . $css_rel;
 
-    // Hard requirement: minified CSS must exist
-    if (! file_exists($css_abs)) {
-        return;
-    }
+	// Hard requirement: minified CSS must exist
+	if ( ! file_exists( $css_abs ) ) {
+		return;
+	}
 
-    wp_enqueue_style(
-        '_s-style',
-        $uri . $css_rel,
-        array(),
-        filemtime($css_abs)
-    );
+	wp_enqueue_style(
+		'_s-style',
+		$uri . $css_rel,
+		array(),
+		filemtime( $css_abs )
+	);
 
-    wp_enqueue_script(
-        '_s-navigation',
-        get_template_directory_uri() . '/js/navigation.js',
-        array(),
-        LACPCAVERSION,
-        true
-    );
+	wp_enqueue_script(
+		'_s-navigation',
+		get_template_directory_uri() . '/js/navigation.js',
+		array(),
+		_S_VERSION,
+		true
+	);
 
-    if (is_singular() && comments_open() && get_option('thread_comments')) {
-        wp_enqueue_script('comment-reply');
-    }
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+		wp_enqueue_script( 'comment-reply' );
+	}
 }
 add_action( 'wp_enqueue_scripts', '_s_scripts' );
 
@@ -179,15 +179,17 @@ add_action( 'wp_enqueue_scripts', '_s_scripts' );
  * Always load theme.json styles last to make priority
  */
 add_action(
-    'wp_enqueue_scripts', function () {
-        // This will output Global Styles again at the end, making them win in cascade.
-        if (function_exists('wp_get_global_stylesheet')) {
-            $css = wp_get_global_stylesheet();
-            if ($css) {
-                wp_add_inline_style('_s-style', $css);
-            }
-        }
-    }, 999
+	'wp_enqueue_scripts',
+	function () {
+		// This will output Global Styles again at the end, making them win in cascade.
+		if ( function_exists( 'wp_get_global_stylesheet' ) ) {
+			$css = wp_get_global_stylesheet();
+			if ( $css ) {
+				wp_add_inline_style( '_s-style', $css );
+			}
+		}
+	},
+	999
 );
 
 /**
@@ -213,38 +215,36 @@ require get_template_directory() . '/inc/customizer.php';
 /**
  * Enqueue Bootstrap.
  */
-function theme_enqueue_bootstrap()
-{
-    $path = get_template_directory() . '/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js';
+function theme_enqueue_bootstrap() {
+	$path = get_template_directory() . '/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js';
 
-    wp_enqueue_script(
-        'bootstrap-js',
-        get_template_directory_uri() . '/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js',
-        array(),
-        file_exists($path) ? filemtime($path) : null,
-        true
-    );
+	wp_enqueue_script(
+		'bootstrap-js',
+		get_template_directory_uri() . '/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js',
+		array(),
+		file_exists( $path ) ? filemtime( $path ) : null,
+		true
+	);
 }
-add_action('wp_enqueue_scripts', 'theme_enqueue_bootstrap');
+add_action( 'wp_enqueue_scripts', 'theme_enqueue_bootstrap' );
 
 /**
  * Include Bootstrap 5 Navwalker
  */
 $navwalker_path = get_template_directory() . '/inc/dhali-bootstrap-5-navwalker.php';
-if (file_exists($navwalker_path)) {
-    require_once $navwalker_path;
+if ( file_exists( $navwalker_path ) ) {
+	require_once $navwalker_path;
 }
 
 /**
  * Load ACF Blocks
  */
-function dhali_register_acf_blocks()
-{
-    foreach (glob(__DIR__ . '/acf-blocks/*', GLOB_ONLYDIR) as $block_dir) {
-        register_block_type($block_dir);
-    }
+function dhali_register_acf_blocks() {
+	foreach ( glob( __DIR__ . '/acf-blocks/*', GLOB_ONLYDIR ) as $block_dir ) {
+		register_block_type( $block_dir );
+	}
 }
-add_action('init', 'dhali_register_acf_blocks');
+add_action( 'init', 'dhali_register_acf_blocks' );
 
 /**
  * Load Jetpack compatibility file.
@@ -269,8 +269,11 @@ if ( class_exists( 'WooCommerce' ) ) {
  * Currently adding navbar-brand from Bootstrap
  * /
 /* function add_custom_class_to_logo($html) { */
-/*     $html = str_replace('class="custom-logo-link"', 'class="custom-logo-link navbar-brand "', $html); */
-/*     return $html; */
-/* } */
+/*
+	 $html = str_replace('class="custom-logo-link"', 'class="custom-logo-link navbar-brand "', $html); */
+/*
+	 return $html; */
+/*
+ } */
 /* add_filter('get_custom_logo', 'add_custom_class_to_logo'); */
 
